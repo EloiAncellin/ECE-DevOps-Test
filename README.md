@@ -8,13 +8,14 @@ Install dependencies:
 ```console
 npm install
 ```
-<br/>
-To run project:
+
+## Running the project
+
 ```console
 node app
 ```
-<br/>
-To run tests: 
+
+## Running the porject's tests 
 ```console
 ./node_modules/mocha/bin/mocha
 ```
