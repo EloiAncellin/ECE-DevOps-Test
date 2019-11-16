@@ -8,6 +8,8 @@ Install dependencies:
 ```console
 npm install
 ```
+You should also install the database with the database.sql file. 
+The db name shall be td_list_test.
 
 ## Running the project
 
