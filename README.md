@@ -15,7 +15,7 @@ npm install
 node app
 ```
 
-## Running the porject's tests 
+## Running the project's tests 
 ```console
 ./node_modules/mocha/bin/mocha
 ```
