@@ -30,15 +30,6 @@ connection.connect((err) => {
 	}
 
 
-describe('Array', function() {
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
-      assert.equal([1, 2, 3].indexOf(4), -1);
-    });
-  });
-});
-
-
 
 describe('Database connection', function(){
 	it('should return true if the dbcon has been done', function() {
@@ -121,15 +112,6 @@ describe('Go down 2', function(){
 		})
 	});
 })
-
-
-
-
-
-
-
-
-
 
 
 
