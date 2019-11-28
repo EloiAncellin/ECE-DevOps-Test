@@ -36,7 +36,9 @@ describe('1: Thoses tests are desgined to test a database connection', function(
 					  	assert.equal(connected, true);
 					}
 				});
+
 			});
+		});
 	});
 
 
@@ -47,7 +49,7 @@ describe('1: Thoses tests are desgined to test a database connection', function(
 			dbConnection.getTodoList(connection, todoList, () => {
 				assert.equal(todoList[0].length, 4);
 			});
-		});
+
 	});
 });
 
@@ -56,12 +58,10 @@ describe('1: Thoses tests are desgined to test a database connection', function(
 
 	describe('Saving todoList to db. ', function (){
 		it('should return true if the saved todoList is the same that the one that is loaded right after.', function(){
-			var connected;
-			connection.connect(()=>{
-				dbConnection.saveTodoList(connection, testTodoList, function () {
-					dbConnection.getTodoList(connection, todoList, function(){
-						assert.equal(testTodoList, getTodoList);
-					});
+			var todoList;
+			dbConnection.saveTodoList(connection, testTodoList, function () {
+				dbConnection.getTodoList(connection, todoList, function(){
+					assert.equal(testTodoList, getTodoList);
 				});
 			});
 		})

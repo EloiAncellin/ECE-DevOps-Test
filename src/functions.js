@@ -1,6 +1,3 @@
-
-
-
 const goDown = function(todoList, id){
 	for (var i=todoList.length-2; i>=0; i--) {
 
@@ -37,24 +34,8 @@ const removeTask = function(todoList, task_id){
     }
 }
 
-const manageTask = function(todoList, task){
-    var now = new Date();
-        for (var i=todoList.length-1; i>=0; i--) {
-
-            if (todoList[i][0] === task[0]) {
-                todoList[i][1] = task[1];
-                todoList[i][2] = socket.pseudo;
-                todoList[i][3] = dateFormat(now, "d mmm à H:MM:ss");
-                break;
-            }
-
-        }
-}
-
-
 module.exports ={
 	goDown,
 	goUp,
     removeTask,
-    manageTask
 };
