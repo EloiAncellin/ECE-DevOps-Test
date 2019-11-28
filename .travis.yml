@@ -23,6 +23,6 @@ services:
 
 before_install:
   -sudo mysql -e 'CREATE DATABASE td_list_test'
-  -sudo mysql -u root --password="root" <database.sql 
+  -sudo mysql -u root --password="root" <./database.sql 
 
 
