@@ -20,10 +20,12 @@ testTodoList = [
 			    database: 'td_list_test',
 			    port: 8889
 			}
+const connection = mysql.createConnection(dbConfig);
+
+describe('1: Thoses tests are desgined to test a database connection', function() {
 
 	describe('Database connection', function(){
 		it('should return true if the dbcon has been done', function() {		
-			const connection = mysql.createConnection(dbConfig);
 			var connected;
 			connection.connect((err) => {
 				  	if (err){
@@ -41,11 +43,8 @@ testTodoList = [
 	describe('Retrieving the tdl from db', function(){
 	it('Should return an array of length 4', function(){
 		var todoList=[];
-		const connection = mysql.createConnection(dbConfig);
-		var connected;
 		connection.connect(() =>{
 			dbConnection.getTodoList(connection, todoList, () => {
-				console.log(todoList);
 				assert.equal(todoList[0].length, 4);
 			});
 		});
@@ -57,17 +56,16 @@ testTodoList = [
 
 	describe('Saving todoList to db. ', function (){
 		it('should return true if the saved todoList is the same that the one that is loaded right after.', function(){
-			var todoList;
-			const connection = mysql.createConnection(dbConfig);
 			var connected;
-			connection.connect();
-	
-			dbConnection.saveTodoList(connection, testTodoList, function () {
-				dbConnection.getTodoList(connection, todoList, function(){
-					assert.equal(testTodoList, getTodoList);
+			connection.connect(()=>{
+				dbConnection.saveTodoList(connection, testTodoList, function () {
+					dbConnection.getTodoList(connection, todoList, function(){
+						assert.equal(testTodoList, getTodoList);
+					});
 				});
 			});
 		})
 	})
 
+})
 

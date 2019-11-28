@@ -4,6 +4,7 @@ var dateFormat = require('dateformat');
 var mysql = require('mysql');
 var dbCon = require('./dbConnection.js');
 var functions = require('./functions.js');
+var path = require('path');
 
 dateFormat.i18n = {
     dayNames: ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
@@ -12,6 +13,7 @@ dateFormat.i18n = {
 var ent = require('ent');
 
 var app = require('express')();
+app.set('views', path.join(__dirname, '/views'));
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
@@ -93,16 +95,13 @@ todoListIO.on('connection', function (socket) {
     socket.on('remove task', function (task_id) {
         for (var i=todoList.length-1; i>=0; i--) {
 
-            if (todoList[i][0] === task_id) {
-                todoList.splice(i, 1);
-                break;
-            }
+            functions.removeTask(todoList, task_id)
         }
         dbCon.saveTodoList(connection, todoList);
         todoListIO.emit('update todolist', todoList);
     });
     socket.on('manage task', function (task) {
-        var now = new Date();
+            var now = new Date();
         for (var i=todoList.length-1; i>=0; i--) {
 
             if (todoList[i][0] === task[0]) {
@@ -139,6 +138,7 @@ chatIO.on('connection', function (socket) {
         socket.pseudo = pseudo;
         user[0] = [socket.pseudo, dateFormat(now, "d mmm à H:MM:ss")];
         user[1].push([pseudo, dateFormat(now, "d mmm à H:MM:ss")]);
+        console.log(user);
         chatIO.emit('user joined', user);
     });
 
