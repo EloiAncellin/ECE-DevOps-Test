@@ -19,5 +19,5 @@ node app
 
 ## Running the project's tests 
 ```console
-./node_modules/mocha/bin/mocha
+npm test
 ```
