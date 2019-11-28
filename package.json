@@ -23,7 +23,6 @@
     },
     "scripts": {
         "test": "./node_modules/mocha/bin/mocha",
-        "tsc": "tsc",
         "test:coveralls": "jest --coverage  --coverageReporters=text-lcov | coveralls"
     }
 }
