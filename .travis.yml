@@ -14,7 +14,15 @@ install:
 
 script:
   - npm run test:coveralls
+  - 
 
 notifications:
   - email:false
+services:
+  -mysql
+
+before_install:
+  -sudo mysql -e 'CREATE DATABASE td_list_test'
+  -sudo mysql -u root --password="root" <database.sql 
+
 
