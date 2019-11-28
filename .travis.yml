@@ -23,6 +23,6 @@ services:
   -mysql
 
 before_install:
-  -sudo mysql -e 'CREATE DATABASE td_list_test
+  - mysql -e 'CREATE DATABASE myapp_test;'
 
  
