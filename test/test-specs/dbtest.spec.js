@@ -18,7 +18,7 @@ testTodoList = [
 			    password: 'root',
 			    host: '127.0.0.1',
 			    database: 'td_list_test',
-			    port: 8889
+			    port: 3306
 			}
 const connection = mysql.createConnection(dbConfig);
 

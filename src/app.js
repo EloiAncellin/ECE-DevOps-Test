@@ -36,7 +36,7 @@ var dbConfig = {
     password: 'root',
     host: '127.0.0.1',
     database: 'td_list_test',
-    port: 3306
+    port: 8889
 }
 
 
