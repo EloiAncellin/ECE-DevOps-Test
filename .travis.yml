@@ -14,7 +14,6 @@ install:
 
 script:
   - npm run test:coveralls
-  - 
 
 notifications:
   - email:false
@@ -27,21 +26,21 @@ before_install:
  
 
 matrix:
-  -include:
-    -env: DB=MYSQL57
-    sudo: required
-    dist: trusty
-    go: 1.10.x
-    services:
-      - docker
-    before_install:
-      - go get golang.org/x/tools/cmd/cover
-      - go get github.com/mattn/goveralls
-      - docker pull mysql:5.7
-      - docker run -d -p 127.0.0.1:3307:3306 --name mysqld -e MYSQL_DATABASE=td_list_test -e MYSQL_USER=root -e MYSQL_PASSWORD=root -e MYSQL_ROOT_PASSWORD=root
-        mysql:5.7 --innodb_log_file_size=256MB --innodb_buffer_pool_size=512MB --max_allowed_packet=16MB --local-infile=1
-      - cp .travis/docker.cnf ~/.my.cnf
-      - .travis/wait_mysql.sh
+  include:
+    - env: DB=MYSQL57
+      sudo: required
+      dist: trusty
+      go: 1.10.x
+      services:
+        - docker
+      before_install:
+        - go get golang.org/x/tools/cmd/cover
+        - go get github.com/mattn/goveralls
+        - docker pull mysql:5.7
+        - docker run -d -p 127.0.0.1:3306 --name mysqld -e MYSQL_DATABASE=root -e MYSQL_USER=root -e MYSQL_PASSWORD=root -e MYSQL_ROOT_PASSWORD=root
+          mysql:5.7 --innodb_log_file_size=256MB --innodb_buffer_pool_size=512MB --max_allowed_packet=16MB --local-infile=1
+        - cp .travis/docker.cnf ~/.my.cnf
+        - .travis/wait_mysql.sh
       before_script:
         - export MYSQL_TEST_USER=root
         - export MYSQL_TEST_PASS=root
