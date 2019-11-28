@@ -63,5 +63,3 @@ describe('Go down 2', function(){
 		})
 	});
 })
-
-})
