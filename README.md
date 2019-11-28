@@ -1,4 +1,4 @@
-# ECE-DevOps-Test     [![Coverage Status](https://coveralls.io/repos/github/EloiAncellin/ECE-DevOps-Test/badge.svg?branch=master)](https://coveralls.io/github/EloiAncellin/ECE-DevOps-Test?branch=master)
+# ECE-DevOps-Test     [![Coverage Status](https://coveralls.io/repos/github/EloiAncellin/ECE-DevOps-Test/badge.svg?branch=master)](https://coveralls.io/github/EloiAncellin/ECE-DevOps-Test?branch=master)     [![Build Status](https://travis-ci.com/EloiAncellin/ECE-DevOps-Test.svg?branch=master)](https://travis-ci.com/EloiAncellin/ECE-DevOps-Test)
 # Created by Eloi ANCELLIN the 16th of november 2019
 TodoList and chat developed for training in order to implement tests on it.
 
