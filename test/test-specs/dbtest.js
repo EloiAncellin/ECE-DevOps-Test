@@ -20,31 +20,35 @@ testTodoList = [
 			    database: 'td_list_test',
 			    port: 8889
 			}
-	const connection = mysql.createConnection(dbConfig);
-	var connected;
-	connection.connect((err) => {
-	  	if (err){
-	  		connected = false;
-		}else{
-		  	connected= true;
-		}
+
 	describe('Database connection', function(){
-		it('should return true if the dbcon has been done', function() {
-			  	assert.equal(connected, true);
+		it('should return true if the dbcon has been done', function() {		
+			const connection = mysql.createConnection(dbConfig);
+			var connected;
+			connection.connect((err) => {
+				  	if (err){
+				  		connected = false;
+				  		assert.equal(connected, true);
+					}else{
+					  	connected= true;
+					  	assert.equal(connected, true);
+					}
+				});
 			});
-		});
 	});
 
 
 	describe('Retrieving the tdl from db', function(){
 	it('Should return an array of length 4', function(){
 		var todoList=[];
-		dbConnection.getTodoList(connection, todoList, () => {
-			console.log(todoList);
-			//assert(Array.isArray(todoList));
-			assert.equal(todoList[0].length, 4);
+		const connection = mysql.createConnection(dbConfig);
+		var connected;
+		connection.connect(() =>{
+			dbConnection.getTodoList(connection, todoList, () => {
+				console.log(todoList);
+				assert.equal(todoList[0].length, 4);
+			});
 		});
-
 	});
 });
 
@@ -54,6 +58,10 @@ testTodoList = [
 	describe('Saving todoList to db. ', function (){
 		it('should return true if the saved todoList is the same that the one that is loaded right after.', function(){
 			var todoList;
+			const connection = mysql.createConnection(dbConfig);
+			var connected;
+			connection.connect();
+	
 			dbConnection.saveTodoList(connection, testTodoList, function () {
 				dbConnection.getTodoList(connection, todoList, function(){
 					assert.equal(testTodoList, getTodoList);
